@@ -19,7 +19,7 @@
                 <li><a href="#mars-weather">Mars Weather</a></li>
                 <li><a href="#asteroids">Asteroids</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="#about">About</a></li>sncdsn kxn K
+                <li><a href="#about">About</a></li>
                 <li><a href="#login">Login</a></li>
                 <li><a href="#register">Register</a></li>
             </ul>
@@ -52,21 +52,20 @@
         <section id="login">
             <h2>Login</h2>
             <p>Please log in to access additional features and personalized content.</p>
-            <button class="loginBtn" onclick="openModal()">Login</button>
+            <button id="loginBtn">Login</button>
+
             <!-- The Modal -->
+
             <div id="loginModal" class="modal">
                 <div class="modal-content">
                     <span class="close">&times;</span>
-                    <form action="/login" method="post">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" name="username" required>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" name="password" required>
-                        <button type="submit" class="submitBtn">Login</button>
-                    </form>
+                    <div id="modal-body">
+                        <!-- Modal body -->
+                    </div>
                 </div>  
             </div>
         </section>
+
         <section id="register">
             <h2>Register</h2>
             <p>If you haven't already registered, please sign up now.</p>
@@ -90,12 +89,13 @@
 
         
     </main>
+
     <footer>
         <p>&copy; 2024 NASA Astronomy Website. All rights reserved.</p>
         <p>Developed by Asmita Mandal. For more information, visit <a href="https://api.nasa.gov" target="_blank">NASA API Portal</a>.</p>
     </footer>
 
-    <script>
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function() {
             var modal = document.getElementById("loginModal");
             var btn = document.querySelector(".loginBtn");
@@ -113,7 +113,7 @@
                 }
             }
         });
-    </script>
+    </script> -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var registerModal = document.getElementById("registerModal");
@@ -135,6 +135,6 @@
         })
     </script>
     
-<script src="scripts.js"></script>
+    <script src="../public/scripts.js" />
 </body>
 </html>

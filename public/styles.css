@@ -131,7 +131,7 @@ input[type="email"] {
     font-size: 1em;
 }
 
-.loginBtn, .registerBtn, .submitBtn {
+#loginBtn, .registerBtn, .submitBtn {
     border: none;
     outline: none;
     padding-inline: 2em;
@@ -145,10 +145,10 @@ input[type="email"] {
     transition: 0.2s;
     cursor: pointer;
 }
-.loginBtn:hover, .submitBtn:hover {
+#loginBtn:hover, .submitBtn:hover {
     background-color: #1a1b3a;
 }
-.loginBtn:active, .submitBtn:active {
+#loginBtn:active, .submitBtn:active {
     background-color: #15162e;
 }
 
