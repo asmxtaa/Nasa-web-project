@@ -1,0 +1,70 @@
+<!-- /views/dashboard.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./astronomy_logo.png" alt="NASA Astronomy Logo">
+            <h1><a href="#">NASA ASTRONOMY</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/logout">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="dashboard">
+            <h2>Welcome to your Dashboard, <%= username %>!</h2>
+            <p>This is your personalized space. Here you can find your favorite content and more.</p>
+            
+            <h3>User Details</h3>
+            <ul>
+                <li><strong>Username:</strong> <%= username %></li>
+                
+                
+                
+            </ul>
+            
+            <h3>History</h3>
+            <ul>
+                <li>Viewed articles</li>
+                <li>Search history</li>
+                
+                
+
+            </ul>
+            
+            <h3>Saved Links</h3>
+            <ul>
+                <li><a href="#">Saved Article 1</a></li>
+                <li><a href="#">Saved Article 2</a></li>
+                
+                
+
+            </ul>
+            
+            <h3>Saved Images</h3>
+            <div class="saved-images">
+                <img src="/path/to/saved_image_1.jpg" alt="Saved Image 1">
+                <img src="/path/to/saved_image_2.jpg" alt="Saved Image 2">
+                
+                
+
+            </div>
+            
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 NASA Astronomy Website. All rights reserved.</p>
+        <p>Developed by Asmita Mandal. For more information, visit <a href="https://api.nasa.gov" target="_blank">NASA API Portal</a>.</p>
+    </footer>
+</body>
+</html>

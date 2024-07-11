@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const Users = require("./models/config")
+const bcrypt = require("bcryptjs")
 const port = process.env.PORT || 5000
 
 const app = express();
@@ -16,26 +17,60 @@ app.listen(port, () => {
     console.log('Server running on', port)
 })
 
-app.get("/", (req, res) => {
-    res.render("welcome")
+// app.get("/", (req, res) => {
+//     res.render("welcome")
+// })
+
+// app.get("/login", (req, res) => {
+//     res.render('loginModal')
+// })
+
+app.post("/", async (req, res) => {
+    try {
+        const username = req.body.username
+        const password = req.body.password
+
+        const userData = await Users.findOne({username: username})
+
+        const isMatched = await bcrypt.compare(password, userData.password)
+        if(isMatched){
+            res.send("Logged in")
+        } else{
+            res.send("Invalid password")
+        }
+
+    } catch (error) {
+        res.status(400).send("invalid login details")
+    }
 })
 
-app.get("/login", (req, res) => {
-    res.render('loginModal')
-})
-
-app.post("/", async(req, res) => {
+app.post("/register", async(req, res) => {
     try {
         
-        const userData = new Users({
-            username: req.body.username,
-            password: req.body.password
-        })
+        const password = req.body.password
+        const cpassword = req.body.confirmPassword
 
-        const user = await userData.save()
-        res.status(201).render("welcome")
+        if(password == cpassword){
+            const userData = new Users({
+            name: req.body.name,
+            username: req.body.username,
+            email: req.body.email,
+            password: password
+            })
+            const user = await userData.save()
+            res.status(201).render("welcome")
+        }
+        else{
+            res.status(400).send("invalid credentials")
+        }
+        
 
     } catch (error) {
         res.status(400).send(error)
     }
 })
+
+app.get("/register", (req, res) => {
+    res.render('register')
+})  
+

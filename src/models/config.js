@@ -1,4 +1,5 @@
 const mongoose = require("mongoose")
+const bcrypt = require("bcryptjs")
 const connect = mongoose.connect("mongodb://localhost:27017/nasa-website")
 
 connect.then(() => {
@@ -8,9 +9,17 @@ connect.then(() => {
     console.log("Database cannot be connected")
 })
 
-const loginSchema = new mongoose.Schema({
+const registerSchema = new mongoose.Schema({
+    name: {
+        type: String,
+        required: true
+    },
     username: {
         type: String, 
+        required: true
+    },
+    email: {
+        type: String,
         required: true
     },
     password: {
@@ -19,6 +28,15 @@ const loginSchema = new mongoose.Schema({
     }
 })
 
-const collection = new mongoose.model("users", loginSchema)
+registerSchema.pre("save", async function(next){
+
+    if(this.isModified("password")){
+        this.password = await bcrypt.hash(this.password, 10)
+        next()
+    }
+    
+})
+
+const collection = new mongoose.model("users", registerSchema)
 
 module.exports = collection

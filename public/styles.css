@@ -131,7 +131,11 @@ input[type="email"] {
     font-size: 1em;
 }
 
-#loginBtn, .registerBtn, .submitBtn {
+.error{
+    color: rgb(224, 72, 72)
+}
+
+#loginBtn, #registerBtn, .submitBtn {
     border: none;
     outline: none;
     padding-inline: 2em;
@@ -179,6 +183,11 @@ input[type="email"] {
     outline: none;
 }
 
+.modal-body {
+    outline: none;
+    border: none;
+}
+
 /* The Close Button */
 .close {
     color: #aaa;
@@ -218,4 +227,14 @@ input[type="email"] {
 
 .submitBtn:active {
     background-color: #1668c1;
+}
+
+#register-link {
+    text-decoration: none;
+    color: #10bcd3;
+}
+
+#register-link:visited {
+    text-decoration: none;
+    color: #10bcd3;
 }

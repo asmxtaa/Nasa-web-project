@@ -6,31 +6,71 @@ document.addEventListener("DOMContentLoaded", () => {
     const loginBtn = document.getElementById('loginBtn')
     const modalBody = document.getElementById('modal-body')
     const loginModal = document.getElementById('loginModal')
-    const modal = document.getElementsByClassName('modal')
-    const span = document.getElementsByClassName('close')[0];
+    const span = document.getElementById('close');
 
+    // login
+    // loginBtn.onclick = () => {
+    //     fetch('/login')
+    //         .then(response => response.text())
+    //         .then(data => {
+    //             sessionStorage.setItem('loginAllowed', 'true')
 
-    loginBtn.onclick = () => {
-        fetch('/login')
-            .then(response => response.text())
-            .then(data => {
-                modalBody.innerHTML = data
-                loginModal.style.display = 'block'
-            })
-            .catch(error => console.error('Error fetching modal content:', error))
+    //             modalBody.innerHTML = data
+    //             history.pushState(null, '', '/login')
+                
+                
+    //         })
+    //         .catch(error => console.error('Error fetching modal content:', error))
+    // }
+
+    loginBtn.onclick = function() {
+        loginModal.style.display = 'block'
     }
 
     span.onclick = function() {
-        modal.style.display = 'none';
+        loginModal.style.display = 'none';
     }
 
     window.onclick = function(event) {
-        if (event.target == modal) {
-            modal.style.display = 'none';
+        if (event.target == loginModal) {
+            loginModal.style.display = 'none';
         }
     }
 
+    window.onpopstate = function(event) {
+        // Handle back/forward button
+        if (loginModal.style.display === 'block') {
+            loginModal.style.display = 'none';
+        }
+
+    }
+
+
 });
+
+document.querySelector(".submitBtn").addEventListener('click', (e) => {
+    e.preventDefault()
+    const username = document.getElementById("username").value
+    const password = document.getElementById("password").value
+
+    // regex
+
+    const usernameRegex = /^[A-Za-z0-9 ]{3,20}$/
+    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]){8,}$/
+    const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
+
+    // clear errors
+    document.querySelectorAll('.error').forEach((currElem) => (currElem.textContent = ""))
+
+    if(!usernameRegex.test(username)){
+        document.getElementById('usernameError').textContent = "Username invalid"
+    }
+    if(!passwordRegex.test(password)){
+        document.getElementById('passwordError').textContent = "Password invalid"
+    }
+})
+
+
 
 function fetchMarsWeather() {
 }

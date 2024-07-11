@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - NASA Astronomy Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main>
+        <section id="register">
+            <h2>Register</h2>
+            <p>If you haven't already registered, please sign up now.</p>
+            <div class="modal-content">
+                <form action="/register" method="post">
+
+                    <label for="fullName">Full name:</label>
+                    <input type="text" id="fullName" name="name" required>
+                    <div class="error" id="nameError"></div>
+                    
+                    <label for="newUsername">Username:</label>
+                    <input type="text" id="newUsername" name="username" required>
+                    
+                    
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="newPassword">Password:</label>
+                    <input type="password" id="newPassword" name="password" required>
+
+                    <label for="confirmPassword">Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                    <button type="submit" class="submitBtn">Register</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 NASA Astronomy Website. All rights reserved.</p>
+        <p>Developed by Asmita Mandal. For more information, visit <a href="https://api.nasa.gov" target="_blank">NASA API Portal</a>.</p>
+    </footer>
+
+    <script>
+        window.onpopstate = () =>{
+            window.location = '/'
+        }
+    </script>
+</body>
+</html>
