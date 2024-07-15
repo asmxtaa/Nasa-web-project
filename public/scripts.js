@@ -7,6 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const modalBody = document.getElementById('modal-body')
     const loginModal = document.getElementById('loginModal')
     const span = document.getElementById('close');
+    let password = document.getElementById("password")
+    let eyeBtn = document.getElementById('eye-btn')
 
     // login
     // loginBtn.onclick = () => {
@@ -42,7 +44,16 @@ document.addEventListener("DOMContentLoaded", () => {
         if (loginModal.style.display === 'block') {
             loginModal.style.display = 'none';
         }
-
+    }
+    
+    eyeBtn.onclick = () => {
+        if(password.type == "password"){
+            password.type == "text"
+            eyeBtn.src = './resources/pw_show.png'
+        } else{
+            password.type == "password"
+            eyeBtn.src = './resources/pw_hide.png'
+        }
     }
 
 
@@ -69,6 +80,7 @@ document.querySelector(".submitBtn").addEventListener('click', (e) => {
         document.getElementById('passwordError').textContent = "Password invalid"
     }
 })
+
 
 
 

@@ -1,11 +1,12 @@
 const mongoose = require("mongoose")
 const bcrypt = require("bcryptjs")
-const connect = mongoose.connect("mongodb://localhost:27017/nasa-website")
+const connect = mongoose.connect("mongodb+srv://agnidhra2k4:Z2EgVJ7YZAtjSMPd@cluster0.tustmd2.mongodb.net/nasa-login?retryWrites=true&w=majority&appName=Cluster0")
 
 connect.then(() => {
     console.log("Database connected")
 })
-.catch(() => {
+.catch((err) => {
+    console.log(err);
     console.log("Database cannot be connected")
 })
 

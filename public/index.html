@@ -61,15 +61,19 @@
                     <div id="modal-body">
                         <!-- Modal body -->
                         <form method="post" id="modal-form">
-
                             <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" required>
+                            <div id="input-box">
+                                <input type="text" id="username" name="username" required>
+                            </div>
                             <div class="error" id="usernameError"></div>
-                        
+
                             <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
-                            <div class="error" id="passwordError"r̥></div>
-                            <img src="../resources/pw_show.png"/>
+                            <div id="input-box">
+                                <input type="password" id="password" name="password" required>
+                                <img src="./resources/pw_show.png" id="eye-btn"/>
+                            </div>
+                            <div class="error" id="passwordError"></div>
+
                         
                             <button type="submit" class="submitBtn">Login</button>
                         
@@ -84,6 +88,7 @@
         
     </main>
 
+    
     <footer>
         <p>&copy; 2024 NASA Astronomy Website. All rights reserved.</p>
         <p>Developed by Asmita Mandal. For more information, visit <a href="https://api.nasa.gov" target="_blank">NASA API Portal</a>.</p>
