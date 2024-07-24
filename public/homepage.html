@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Astronomy Website</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="./astronomy_logo.png" alt="NASA Astronomy Logo">
+            <h1><a href="#">NASA ASTRONOMY</a></h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#mars-weather">Mars Weather</a></li>
+                <li><a href="#asteroids">Asteroids</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="home" class="home-section">
+            <h2>Welcome to the NASA Astronomy Website</h2>
+            <p>This website provides fascinating insights into our universe using data and images sourced directly from NASA's APIs. Stay updated with the latest Mars weather, learn about near-Earth objects, and enjoy breathtaking images of space.</p>
+        </section>
+        
+        <section id="articles">
+            <h2>Articles</h2>
+            <div class="articles-container">
+            </div>
+        </section>
+
+        <section id="gallery">
+            <h2>Gallery</h2>
+            <div class="gallery-container">
+                <img src="resources/placeholder.png" alt="" id="apod-img">
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 NASA Astronomy Website. All rights reserved.</p>
+        <p>Developed by Asmita Mandal. For more information, visit <a href="https://api.nasa.gov" target="_blank">NASA API Portal</a>.</p>
+    </footer>
+    <script src="./homepage.js"></script>
+</body>
+</html>

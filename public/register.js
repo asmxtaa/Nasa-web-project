@@ -1,25 +1,45 @@
 document.addEventListener("DOMContentLoaded", () => {
-    let eyeBtn = document.getElementById("eye-btn")
-    let password = document.querySelector(".password")
-    console.log(password.value)
+    // let eyeBtn = document.getElementById("eye-btn")
+    // let password = document.querySelector(".password")
+    // console.log(password.value)
     
-    eyeBtn.onclick = () => {
-        console.log(password.value);
-        if(password.type == "password"){
-            password.type == "text"
-            eyeBtn.src = './resources/pw_show.png'
-        } else{
-            password.type == "password"
-            eyeBtn.src = './resources/pw_hide.png'
-        }
-    }
+    // eyeBtn.onclick = () => {
+    //     console.log(password.value);
+    //     if(password.type == "password"){
+    //         password.type == "text"
+    //         eyeBtn.src = './resources/pw_show.png'
+    //     } else{
+    //         password.type == "password"
+    //         eyeBtn.src = './resources/pw_hide.png'
+    //     }
+    // }
 
-    document.querySelector(".submitBtn").addEventListener('click', (e) => {
-        e.preventDefault();
-        validateForm();
-    });
+    // document.querySelector(".submitBtn").addEventListener('click', (e) => {
+    //     e.preventDefault();
+    //     validateForm();
+    // });
 
 })
+
+let eyeBtn = document.getElementById("eye-btn")
+let password = document.querySelector(".password")
+console.log(password.value)
+
+eyeBtn.onclick = () => {
+    console.log("hello");
+    if(password.type == "password"){
+        password.type == "text"
+        eyeBtn.src = './resources/pw_show.png'
+    } else{
+        password.type == "password"
+        eyeBtn.src = './resources/pw_hide.png'
+    }
+}
+
+document.querySelector(".submitBtn").addEventListener('click', (e) => {
+    e.preventDefault();
+    validateForm();
+});
 
 function validateForm() {
     const name = document.getElementById("fullName").value;
@@ -35,32 +55,32 @@ function validateForm() {
 
     clearErrors();
 
-    let isValid = true;
+    // let isValid = true;
 
     if (!nameRegex.test(name)) {
         document.getElementById('nameError').textContent = "Full name invalid (3-50 characters, letters only)";
-        isValid = false;
+        // isValid = false;
     }
     if (!usernameRegex.test(username)) {
         document.getElementById('usernameError').textContent = "Username invalid (3-20 alphanumeric characters)";
-        isValid = false;
+        // isValid = false;
     }
     if (!emailRegex.test(email)) {
         document.getElementById('emailError').textContent = "Email invalid";
-        isValid = false;
+        // isValid = false;
     }
     if (!passwordRegex.test(password)) {
         document.getElementById('passwordError').textContent = "Password invalid (8+ characters, including uppercase, lowercase, number, and special character)";
-        isValid = false;
+        // isValid = false;
     }
     if (password !== confirmPassword) {
         document.getElementById('confirmPasswordError').textContent = "Passwords do not match";
-        isValid = false;
+        // isValid = false;
     }
 
-    if (isValid) {
-        document.getElementById('registerForm').submit();
-    }
+    // if (isValid) {
+    //     document.getElementById('registerForm').submit();
+    // }
 }
 
 function clearErrors() {

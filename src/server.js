@@ -25,6 +25,10 @@ app.listen(port, () => {
 //     res.render('loginModal')
 // })
 
+app.get("/home", (req, res) => {
+    res.redirect("/homepage.html")
+})
+
 app.post("/", async (req, res) => {
     try {
         const username = req.body.username
@@ -34,13 +38,13 @@ app.post("/", async (req, res) => {
 
         const isMatched = await bcrypt.compare(password, userData.password)
         if(isMatched){
-            res.send("Logged in")
+            res.redirect("/home")
         } else{
             res.send("Invalid password")
         }
 
     } catch (error) {
-        res.status(400).send("invalid login details")
+        res.status(400).send(error)
     }
 })
 
@@ -58,7 +62,7 @@ app.post("/register", async(req, res) => {
             password: password
             })
             const user = await userData.save()
-            res.status(201).render("welcome")
+            res.status(201).render("homepage")
         }
         else{
             res.status(400).send("invalid credentials")

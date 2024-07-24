@@ -59,31 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-document.querySelector(".submitBtn").addEventListener('click', (e) => {
-    e.preventDefault()
-    const username = document.getElementById("username").value
-    const password = document.getElementById("password").value
-
-    // regex
-
-    const usernameRegex = /^[A-Za-z0-9 ]{3,20}$/
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]){8,}$/
-    const emailRegex = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/
-
-    // clear errors
-    document.querySelectorAll('.error').forEach((currElem) => (currElem.textContent = ""))
-
-    if(!usernameRegex.test(username)){
-        document.getElementById('usernameError').textContent = "Username invalid"
-    }
-    if(!passwordRegex.test(password)){
-        document.getElementById('passwordError').textContent = "Password invalid"
-    }
-})
-
-
-
-
 function fetchMarsWeather() {
 }
 
