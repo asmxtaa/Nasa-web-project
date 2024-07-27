@@ -25,9 +25,6 @@ app.listen(port, () => {
 //     res.render('loginModal')
 // })
 
-app.get("/home", (req, res) => {
-    res.redirect("/homepage.html")
-})
 
 app.post("/", async (req, res) => {
     try {
@@ -38,7 +35,7 @@ app.post("/", async (req, res) => {
 
         const isMatched = await bcrypt.compare(password, userData.password)
         if(isMatched){
-            res.redirect("/home")
+            res.redirect("/homepage.html")
         } else{
             res.send("Invalid password")
         }
