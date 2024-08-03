@@ -256,21 +256,185 @@ input[type="email"] {
     color: #10bcd3;
 }
 
-.gallery-container {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(200px, 1fr));
-    gap: 16px;
-    padding: 16px;
-    max-width: 1000px;
+.gallery-container, .articles-container {
     width: 100%;
-    margin: 0 auto;
+    position: relative;
 }
 
-.gallery-item img {
-    width: 100%;
-    height: 300px;
-    object-fit: cover;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    display: block;
+.articles-container .article-carousel{
+    display: grid;
+    grid-auto-flow: column;
     border-radius: 8px;
+    grid-auto-columns: calc((100% / 6) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.gallery-container .img-carousel{
+    display: grid;
+    grid-auto-flow: column;
+    border-radius: 8px;
+    grid-auto-columns: calc((100% / 4) - 12px);
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: 0;
+}
+
+.img-carousel::-webkit-scrollbar, .article-carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-container i, .articles-container i{
+    height: 40px;
+    width: 40px;
+    background-color: white;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    cursor: pointer;
+    position: absolute;
+    color: black;
+    top: 50%;
+    font-size: 1.05rem;
+    transform: translateY(-50%);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+
+.gallery-container i:first-child, .articles-container i:first-child{
+    left: -22px;
+}
+
+.gallery-container i:last-child, .articles-container i:last-child{
+    right: -22px;
+    margin-right: 5px;
+}
+
+.img-carousel .img-card, .article-carousel .article-card{
+    scroll-snap-align: start;
+    height: 270px;
+    /* width: 100%; */
+    list-style: none;
+    background-color: #1a1b3a;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+}
+
+.img-card .img img{
+    border-radius: 8px;
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+}
+
+.img-carousel.no-transition{
+    scroll-behavior: auto;
+}
+
+.img-carousel.dragging{
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+}
+
+.img-carousel.dragging .img-card{
+    cursor: grab;
+    user-select: none;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent);
+    transition: height 0.2s;
+}
+
+.img-card:hover .overlay{
+    height: 100%;
+}
+
+.imgTitle {
+    position: absolute;
+    bottom: 10px;
+    left: 20px;
+    color: white;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.img-card:hover .imgTitle {
+    opacity: 1;
+}
+
+.article-card {
+    background-color: #1a1b3a;
+    cursor: pointer;
+}
+
+.article {
+    color: #fff;
+    overflow-y: hidden;
+    padding: 1.05rem;
+    padding-top: 0;
+}
+
+.article p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 5;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+.article h3{
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-wrap: break-word;
+}
+
+.article-btn {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+    outline: none;
+    text-align: left;
+    /* Optionally reset margins */
+    margin: 0;
+}
+
+@media screen and (max-width: 900px) {
+    .gallery-container .img-carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+
+    .articles-container .article-carousel {
+        grid-auto-columns: calc((100% / 2) - 9px);
+    }
+}
+
+@media screen and (max-width: 70%) {
+    .gallery-container .img-carousel {
+        grid-auto-columns: 100%;
+    }
+
+    .articles-container .article-carousel {
+        grid-auto-columns: 100%;
+    }
 }
